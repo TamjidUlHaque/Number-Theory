@@ -1,0 +1,40 @@
+/*Intuition :-
+    Ekhane muloto question je kotha ta bola hoise ta holo 
+
+    1) a[i]+a[j] should be divisable by x , 2) a[i]-a[j] should be divisable by y .
+
+    Eitare bola jay je 
+
+    1) (a[i]+a[j])%x = 0 ==> (a[i]%x + a[j]%x)%x = 0 ; 
+    Er theke conclusion e ashte pari je hoy a[i] ar a[j] individually x er multiple,
+    otherwise a[i]+a[j] er summation == x ;
+
+    2) (a[i]-a[j])%y = 0 ==> a[i]%y = a[j]%y . 
+    Er theke conclusion e ashte pari je hoy a[i] ar a[j] duita shoman jokhon modulo y .
+
+    Ekhane ekta map of ll , map create kora hoise jekhane jeshokol value er jonno 
+    val%x = something oi shokol value er jonno val%y er freq store kora hocche .
+    ans er moddhe oi porjonto input newa value gulor sathe ekhon input newa current 
+    value er pair toiri korar chesta kora hocche .
+
+    Ekhane x er value tar jonno ektu modular arithmetic tricks khatanu hoise jekhane
+
+    Negative value cover dewar style ta use hoise , jemon -2 % 5 er value calculation
+    er system holo ((-2 % 5)+5)%5 = (-2+5)%5 = 3 .
+
+    Thik ekivabe x er hishab ta hoise val % x to current value tai provide kortese . 
+    Er shonge pair toiri korar jonne amader dorkar holo (x - (val%x))%x . 
+
+    Tai frequency store kora hoise val%x er , ar call kora hoise er pair number er .
+
+*/
+
+void giveMeMyGloryBack() {
+    ll n , x , y ; cin >> n >> x >> y ;
+    map<ll,map<ll,ll>> mp ; ll ans = 0LL ;
+    tamjid(n){
+        ll val ; cin >> val ; ans += mp[(x-(val%x))%x][val%y] ;
+        mp[val%x][val%y]++ ;
+    }
+    cout << ans << endl ;
+}
