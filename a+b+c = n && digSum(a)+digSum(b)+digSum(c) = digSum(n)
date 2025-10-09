@@ -1,0 +1,40 @@
+/*Intuition :-
+    Proshner moddhe bola hoise je amader ke emon 3 ta kore number a , b , c 
+    khuje ber korte hobe jader summation holo n . Eder ke arekta condition hold 
+    korte hobe , digSum(a) + digSum(b) + digSum(c) = digSum(n) . Ei 2 ta condition
+    hold korbe emon triples er koto gula combination toiri kora shomvob eita jante
+    cheyeche . 
+
+    11 er jonne total combination toiri hote pare 9 ta . Egula holo 
+    {11,0,0} er 3 ta , {10,1,0} er 6 ta .
+
+    4 er jonne total combination toiri hote pare 15 ta . Egula holo 
+    {0,0,4} er 3 ta , {0,1,3} er 6 ta , {0,2,2} er 3 ta , {1,1,2} er 3 ta
+
+    Ei case gula theke je observation e asha jay ta holo ekhane emon a , b , c e 
+    condition satisfy korbe jader summation er fole kuno carry toiri hocche na .
+    Tar mane 3 ta songkha a , b , c emon hobe jader shokol posn(ekok,doshok...)
+    er digit er summation >= 0 and <= 9 hobe . 
+
+    Amra brute force way teh O(10*10*10) == O(1000) e calculate kore felte parbo 
+    koto vabe kuno ekta digit form hoite pare . Ekhane shobgula combination e count
+    hoitese . 
+
+    Ekhon amader ke answer calculation korte hobe . Er jonne amra given number n e 
+    thaka proti ta digit koto vabe toiri hote pare eitar multiplication nile e 
+    answer peye jabo .
+
+*/
+
+void giveMeMyGloryBack() {
+    string s ; cin >> s ; ll ans = 1LL ; vll cnt(30,0LL) ;
+    for(int i = 0 ; i <= 9 ; i++){
+        for(int j = 0 ; j <= 9 ; j++){
+            for(int k = 0 ; k <= 9 ; k++){
+                cnt[i+j+k]++ ;
+            }
+        }
+    }
+    for(int i = 0 ; i < len(s) ; i++) ans *= cnt[(s[i]-'0')] ;
+    cout << ans << endl ;
+}
