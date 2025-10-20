@@ -1,0 +1,103 @@
+/*Intuition :-
+    Ei proshner moddhe bola hoise amra jekuno ekta index er value one move e 1 barate
+    pari . That means a[i] = a[i]+1 for the cost of b[i] . Kintu ei version e shobgula
+    b[i] er value 1 . Mane value 1 barate 1 khoroch hobe . Amader ke bolte shorbonimno
+    koto khoroch e duita element er GCD > 1 kora jabe . 
+
+    Approach :- 
+        1) Jodi already duita element er moddhe kuno common factor thake tahole
+        cost hobe 0 .
+        2) Jodi ekta already ekta element er value even number hoy tahole onno
+        ekta element er value 1 barale e choltese . Cost hobe 1.
+        3) Jodi Shob gula factor odd hoy tahole , oi number er cheye 1 boro even
+        number er kuno factor jodi array er onno element er moddhe thake tahole
+        oi element er value 1 barale choltese . Ekhetre o Cost hobe 1 .
+        4) Ar na hole duita odd element er value e 1 kore bariye dibo . Ekhetre
+        cost hobe maximum , value hobe 2 .
+
+    Ei proshner moddhe factor gula ke PreCalculate kora hoise . Ekta array of set 
+    newa hoise PrimeFactorsOf name . Er moddhe 1 theke 2e5 + 10 porjonto shob number
+    er distinct factors gula stored obosthay ache .
+*/
+
+set<ll> factors;
+ 
+void primeFactorization(ll n) {
+    for (ll p = 2; p * p <= n; p++) {
+        while (n % p == 0) {
+            factors.insert(p);
+            n /= p;
+        }
+    }
+    if (n > 1) {
+        factors.insert(n);
+    }
+}
+
+const ll N = 2e5+10 ;
+set<ll> primeFactorsOf[N] ; 
+
+void giveMeMyGloryBack() {
+    ll n ; cin >> n ; vll vec(n) ,arr(n) ; set<ll> st[n] ;
+    tamjid(n) cin >> vec[i] ; tamjid(n) cin >> arr[i] ;
+
+    for(int i = 0 ; i < n ; i++){
+        st[i] = primeFactorsOf[vec[i]] ;
+    }
+
+    map<ll,ll> freq ;
+
+    for(auto val:st){
+        for(auto e:val) freq[e]++ ;
+    }
+
+    if(len(freq)==0) { cout << 2 << endl ; return ;}
+    else{
+        bool flag = false ;
+        for(auto val:freq){
+            if(val.S > 1){
+                cout << 0 << endl ; return ;
+            }
+            if((val.F%2) == 0) flag = true ;
+        }
+        if(flag){
+            cout << 1 << endl ; return ;
+        }else{
+            for(auto &val:vec){
+
+                for(auto& elem:primeFactorsOf[val]){
+                    freq[elem]-- ;
+                }
+
+                for(auto& temp:primeFactorsOf[val+1]){
+                    if(freq[temp]){
+                        cout << 1 << endl ; return ;
+                    }
+                }
+
+                for(auto& elem:primeFactorsOf[val]){
+                    freq[elem]++ ;
+                }
+
+            }
+
+            cout << 2 << endl ;
+
+        }
+    }
+}
+
+
+int main(){
+    Bismillah() ;
+
+    for (int i = 1; i < N; i++) {
+        factors.clear();
+        primeFactorization(i);
+        primeFactorsOf[i] = factors;
+    }
+
+    testloop giveMeMyGloryBack() ;
+
+    Alhamdulillah ;
+}
