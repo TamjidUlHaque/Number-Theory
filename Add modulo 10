@@ -1,0 +1,53 @@
+/*Intuition :-
+    Ekhane proshner moddhe bola hoise je amader ke ekta array dewa thakbe jar moddhe
+    amra a[i] = a[i] + a[i] % 10 operation joto bar icche korte parbo for every i .
+    Amader ke bolte hobe kuno vabe shompurno array er shob element er value shoman hobe
+    ki na . 
+
+    Observations :- 
+    1) Jodi array er shob element already shoman thake tobe obossoi kora jabe . 
+    2) Even element gula kokhonoi odd hobe na . Tai shob gula index er value jodi
+    same hote hoy tahole obossoi eder ke even hote hobe . 
+    3) Number even mane last digit 2 , 4 , 6 , 8 , 0 . Jodi last digit 0 hoy tobe 
+    oi songkha ke o change kora jabe na . Tai no print kore dite hobe . 
+    4) Main observation holo ei proshner porjaykrome 2 , 4 , 8 , 6 ghure ghure ashe .
+
+    36 --> 42 --> 44 --> 48 --> 56 .
+
+    Tarmane jekuno value dewa thakle e era last position e ei 4 ta value repeat korbe
+    0 ar 5 chara . 0 ar 5 er case ta agei handle kore felsi .
+
+    5) Ekhon amra shob gula element er LSD er position e 2 ante pari . Er pore dekhte
+    hobe array er shob element ki ( x + 20 * k ) akriti teh ache ki na . Check korar
+    upay holo (x + 20 * k) % 20 = x % 20 = x' . Ekhon jodi shob gula x' shoman hoy tahole
+    bola jabe je ashole eder ke val%10 add kore kore shoman kora shomvob . 
+    Ar na hole shomvob na .
+     
+*/
+
+void giveMeMyGloryBack() { 
+    ll n ; cin >> n ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    tamjid(n){
+        if(isOdd(vec[i])) vec[i] += (vec[i]%10) ;
+    }
+    if(count(all(vec),vec.front())==n){
+        yes ; return ;
+    }
+    tamjid(n){
+        if(vec[i]%10==0){
+            no ; return ;
+        }
+    }
+    tamjid(n){
+        while(vec[i]%10!=2){
+            vec[i] += vec[i]%10 ;
+        }
+    }
+    tamjid(n){
+        vec[i] %= 20 ;
+    }
+    if(count(all(vec),vec.front())==n){
+        yes ; return ;
+    }
+    no ; 
+}
