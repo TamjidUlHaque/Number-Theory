@@ -34,7 +34,7 @@ _____________________________________ALGOBOT048B________________________________
 const ll N = 1e6 + 33 ;
 bool mark[N+5];
 vector<ll>primes;
-void sieve(){
+void sieveOfEratosthenes(){
     memset(mark,true,sizeof(mark));
     mark[0]=0,mark[1]=0,mark[2]=1;
     for(ll i=4;i<=N;i+=2LL){
